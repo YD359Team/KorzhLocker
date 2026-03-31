@@ -11,11 +11,19 @@
 	<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
 	<CustomResourceTypesSupport>true</CustomResourceTypesSupport>
 	<PublishSingleFile>true</PublishSingleFile>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<SelfContained>true</SelfContained>
+	<PublishTrimmed>true</PublishTrimmed>
 	<Title>KorzhLocker</Title>
 	<Description>Prevents accidental keystrokes by the cat</Description>
 	<PackageIcon>KorzhLocker_icon.png</PackageIcon>
 	<ApplicationIcon>Resources\KorzhLocker_icon.ico</ApplicationIcon>
 	<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+
+	<Version>1.0.0</Version>
+	<AssemblyVersion>1.0.0.0</AssemblyVersion>
+	<FileVersion>1.0.0.0</FileVersion>
+	<InformationalVersion>1.0.0</InformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>
