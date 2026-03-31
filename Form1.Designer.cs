@@ -18,6 +18,7 @@
                 components.Dispose();
             }
             timer1?.Dispose();
+            notifyIcon?.Dispose();
             base.Dispose(disposing);
         }
 
