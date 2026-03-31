@@ -15,6 +15,7 @@
 	<Description>Prevents accidental keystrokes by the cat</Description>
 	<PackageIcon>KorzhLocker_icon.png</PackageIcon>
 	<ApplicationIcon>Resources\KorzhLocker_icon.ico</ApplicationIcon>
+	<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <ItemGroup>
