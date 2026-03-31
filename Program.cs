@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace KorzhLocker
@@ -7,9 +8,20 @@ namespace KorzhLocker
         [STAThread]
         static void Main()
         {
-            ComWrappers.RegisterForMarshalling(WinFormsComInterop.WinFormsComWrappers.Instance);
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            try
+            {
+                ComWrappers.RegisterForMarshalling(WinFormsComInterop.WinFormsComWrappers.Instance);
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Form1());
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("error.log", $"An error occurred: {ex.Message} in {ex.StackTrace}");
+                if (Debugger.IsAttached)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message} in {ex.StackTrace}");
+                }
+            }
         }
     }
 }
