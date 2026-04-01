@@ -34,6 +34,7 @@
             this.Text = "FrmToast";
             this.StartPosition = FormStartPosition.Manual;
             this.FormBorderStyle = FormBorderStyle.None;
+            this.ShowInTaskbar = false;
             // label1
             label1.AutoSize = false;
             label1.Dock = DockStyle.Fill;

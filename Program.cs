@@ -10,16 +10,16 @@ namespace KorzhLocker
         {
             try
             {
-                ComWrappers.RegisterForMarshalling(WinFormsComInterop.WinFormsComWrappers.Instance);
+                //ComWrappers.RegisterForMarshalling(WinFormsComInterop.WinFormsComWrappers.Instance);
                 ApplicationConfiguration.Initialize();
                 Application.Run(new Form1());
             }
             catch (Exception ex)
             {
-                File.WriteAllText("error.log", $"An error occurred: {ex.Message} in {ex.StackTrace}");
+                File.WriteAllText("error.log", $"An error occurred: {ex.Message} in {ex.StackTrace} inner exception {ex.InnerException?.Message}");
                 if (Debugger.IsAttached)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message} in {ex.StackTrace}");
+                    MessageBox.Show($"An error occurred: {ex.Message} in {ex.StackTrace} inner exception {ex.InnerException?.Message}");
                 }
             }
         }

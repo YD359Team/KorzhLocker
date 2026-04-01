@@ -7,12 +7,14 @@
 	<LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-	<PublishAot>true</PublishAot>
-	<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
-	<CustomResourceTypesSupport>true</CustomResourceTypesSupport>
+	<!--<PublishAot>true</PublishAot>-->
+	<!--<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>-->
+	<!--<CustomResourceTypesSupport>true</CustomResourceTypesSupport>-->
 	<PublishSingleFile>true</PublishSingleFile>
 	<SelfContained>true</SelfContained>
-	<PublishTrimmed>true</PublishTrimmed>
+	<!--<PublishTrimmed>true</PublishTrimmed>-->
+	<IlcGenerateCompleteTypeMetadata>true</IlcGenerateCompleteTypeMetadata>
+	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 	<Title>KorzhLocker</Title>
 	<Description>Prevents accidental keystrokes by the cat</Description>
 	<PackageIcon>KorzhLocker_icon.png</PackageIcon>
@@ -41,10 +43,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WinFormsComInterop" Version="0.4.0" />
   </ItemGroup>
 
 </Project>
