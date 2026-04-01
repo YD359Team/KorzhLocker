@@ -7,7 +7,36 @@
 
 ## About EN
 
-In progress...
+A simple program to protect your computer from accidental clicks by a cat when you need to leave your workplace.
+
+### 😼 About the program
+
+The idea is inspired by the CatLock program, the principle of operation is the same:
+- Run the program
+- Be sure that the keyboard is safe.
+- Remove the lock by clicking on the program window (it will hide in the tray)
+- In the tray, you can use the context menu to show the lock window again or close the program.
+
+### ⚙️ How does it work?
+
+1. The program window is located on top of other windows and takes over the input focus.
+2. If focus is lost, focus is forcibly transferred to the program window again.
+3. Keystrokes and closing attempts are detected and blocked (except for some system keys).
+
+### ❓ Questions and answers
+
+Q: Is it free? \
+A: Completely. \
+Q: Do you need registration? \
+A: No. \
+Q: Is there an advertisement? \
+A: No. \
+Q: Does the program collect or send any data to the developer? \
+A: No, the entire code is open - you can verify this yourself. \
+Q: Is it possible to close the program window using Ctrl+F4? \
+A: No, the hacker cat has no chance here. \
+Q: Will the program help by pressing the laptop's power button? \
+A: No, because it is technically impossible.
 
 ## About RU
 
