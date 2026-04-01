@@ -11,7 +11,7 @@ A simple program to protect your computer from accidental clicks by a cat when y
 
 ### 😼 About the program
 
-The idea is inspired by the CatLock program, the principle of operation is the same:
+The idea is inspired by the **CatLock** program, the principle of operation is the same:
 - Run the program
 - Be sure that the keyboard is safe.
 - Remove the lock by clicking on the program window (it will hide in the tray)
