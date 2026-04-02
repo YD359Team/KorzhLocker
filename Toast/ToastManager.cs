@@ -1,6 +1,6 @@
 ﻿namespace KorzhLocker.Toast;
 
-internal class ToastManager
+internal sealed class ToastManager
 {
     public static ToastManager Instance => field ??= new();
 

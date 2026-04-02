@@ -1,3 +1,4 @@
+using KorzhLocker.Input;
 using KorzhLocker.Toast;
 
 namespace KorzhLocker;
@@ -5,6 +6,7 @@ namespace KorzhLocker;
 public partial class Form1 : Form
 {
     private readonly ToastManager toastManager = ToastManager.Instance;
+    private readonly ModifierKeyMonitor keyMonitor = ModifierKeyMonitor.Instance;
 
     private bool isHidden = false;
     private bool needToClose = false;
@@ -41,7 +43,20 @@ public partial class Form1 : Form
         timer1.Tick += Timer1_Tick;
         timer1.Enabled = true;
 
+        keyMonitor.Start();
+
         ShowToast("KorzhLocker is launched");
+    }
+
+    protected override void OnLoad(EventArgs e)
+    {
+        base.OnLoad(e);
+
+        const int HOTKEY_ID = 1;
+        const uint MOD_CONTROL = 0x0002;
+        const uint MOD_ALT = 0x0001;
+        const uint VK_K = 0x4B;
+        HotkeyManager.RegisterHotKey(this.Handle, HOTKEY_ID, MOD_CONTROL | MOD_ALT, VK_K);
     }
 
     private void NotifyIcon_MouseClick(object? sender, MouseEventArgs e)
@@ -61,6 +76,19 @@ public partial class Form1 : Form
         this.Activate();
     }
 
+    protected override void WndProc(ref Message m)
+    {
+        const int WM_HOTKEY = 0x0312;
+        const int HOTKEY_ID = 1;
+
+        if (m.Msg == WM_HOTKEY && m.WParam.ToInt32() == HOTKEY_ID)
+        {
+            ShowWindow();
+        }
+
+        base.WndProc(ref m);
+    }
+
     protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
     {
         if (keyData == Keys.LWin)
@@ -72,9 +100,12 @@ public partial class Form1 : Form
 
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
+        const int HOTKEY_ID = 1;
+
         if (isHidden)
         {
             needToClose = true;
+            HotkeyManager.UnregisterHotKey(this.Handle, HOTKEY_ID);
             base.OnFormClosing(e);
             return;
         }
@@ -85,6 +116,7 @@ public partial class Form1 : Form
         }
         else
         {
+            HotkeyManager.UnregisterHotKey(this.Handle, HOTKEY_ID);
             base.OnFormClosing(e);
         }
     }
@@ -105,6 +137,7 @@ public partial class Form1 : Form
         this.Hide();
         isHidden = true;
         timer1.Enabled = false;
+        keyMonitor.Stop();
         notifyIcon.Visible = true;
 
         ShowToast("KorzhLocker is hidden");
@@ -115,6 +148,7 @@ public partial class Form1 : Form
         this.Show();
         isHidden = true;
         timer1.Enabled = true;
+        keyMonitor.Start();
         notifyIcon.Visible = false;
 
         ShowToast("KorzhLocker is showing");
