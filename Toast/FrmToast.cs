@@ -27,6 +27,12 @@ public partial class FrmToast : Form
         _ = FadeLoop();
     }
 
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        base.OnPaint(e);
+        ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
+    }
+
     private async Task FadeLoop()
     {
         try

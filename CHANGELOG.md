@@ -1,5 +1,12 @@
 ﻿# Changelog
 
+## 1.0.3
+
+- Add Russian language
+- Add contrast borders
+- Sound for toasts
+- More detailed text in lock window
+
 ## 1.0.2
 
 - Add `Ctrl`+`Alt`+`K` hotkey for showing window form tray

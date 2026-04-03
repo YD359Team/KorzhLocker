@@ -1,5 +1,6 @@
 using KorzhLocker.Input;
 using KorzhLocker.Toast;
+using System.Media;
 
 namespace KorzhLocker;
 
@@ -21,16 +22,18 @@ public partial class Form1 : Form
         InitializeComponent();
         if (DesignMode) return;
 
+        label1.Text = SimpleEnvironment.LockWindowHint;
+
         #region notifyIcon
         notifyIcon.Icon = this.Icon;
         notifyIcon.ContextMenuStrip = new();
         notifyIcon.MouseClick += NotifyIcon_MouseClick;
-        notifyIcon.ContextMenuStrip.Items.Add("Show\\Hide", null, (s, e) =>
+        notifyIcon.ContextMenuStrip.Items.Add(SimpleEnvironment.NotifyContextMenuShowHide, null, (s, e) =>
         {
             if (isHidden) ShowWindow();
             else HideWindow();
         });
-        notifyIcon.ContextMenuStrip.Items.Add("Exit", null, (s, e) =>
+        notifyIcon.ContextMenuStrip.Items.Add(SimpleEnvironment.NotifyContextMenuExit, null, (s, e) =>
         {
             needToClose = true;
             this.Close();
@@ -45,7 +48,13 @@ public partial class Form1 : Form
 
         keyMonitor.Start();
 
-        ShowToast("KorzhLocker is launched");
+        ShowToast(SimpleEnvironment.LaunchToast);
+    }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        base.OnPaint(e);
+        ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.LimeGreen, ButtonBorderStyle.Solid);
     }
 
     protected override void OnLoad(EventArgs e)
@@ -140,7 +149,7 @@ public partial class Form1 : Form
         keyMonitor.Stop();
         notifyIcon.Visible = true;
 
-        ShowToast("KorzhLocker is hidden");
+        ShowToast(SimpleEnvironment.HiddenToast);
     }
 
     private void ShowWindow()
@@ -151,11 +160,12 @@ public partial class Form1 : Form
         keyMonitor.Start();
         notifyIcon.Visible = false;
 
-        ShowToast("KorzhLocker is showing");
+        ShowToast(SimpleEnvironment.ShowingToast);
     }
 
     private void ShowToast(string message)
     {
         toastManager.ShowToast(message, 1000);
+        SystemSounds.Asterisk.Play();
     }
 }

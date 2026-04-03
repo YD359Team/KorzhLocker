@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.InteropServices;
 
 namespace KorzhLocker
@@ -11,6 +12,7 @@ namespace KorzhLocker
             try
             {
                 //ComWrappers.RegisterForMarshalling(WinFormsComInterop.WinFormsComWrappers.Instance);
+                SimpleEnvironment.IsRussianLanguage = CultureInfo.CurrentCulture.Name == CultureInfo.GetCultureInfo("ru-RU").Name;
                 ApplicationConfiguration.Initialize();
                 Application.Run(new Form1());
             }

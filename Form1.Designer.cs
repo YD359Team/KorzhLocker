@@ -35,12 +35,15 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(259, 9);
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(241, 25);
+            label1.Padding = new Padding(4);
+            label1.Size = new Size(512, 39);
             label1.TabIndex = 0;
-            label1.Text = "Press mouse left key to close";
+            label1.Text = "Keyboard is locked. Press left mouse key to unlock";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -51,14 +54,15 @@
             ControlBox = false;
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form1";
             Icon = Properties.Resources.KorzhLocker_icon;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "Form1";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "KorzhLocker";
             TopMost = true;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
